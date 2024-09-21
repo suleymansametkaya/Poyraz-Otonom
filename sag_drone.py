@@ -75,39 +75,39 @@ def tara(x1, y1, x2, y2, x3, y3, x4, y4):
     
     # Takeoff komutu
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 0, 0, 0, 0, 0, 0, 0, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 0, 0, 0, 0, 0, 0, 0, 6))
     
     # Diğer komutlar
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x2, y_orta1, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x1, y1, 6))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
                       mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x2, y2, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x2, y2, 6))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta2, y2, 10))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta2, y_orta1, 10))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta1, y_orta1, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta2, y2, 6))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
                       mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta1, y2, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta2, y1, 6))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta3, y2, 10))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta3, y_orta1, 10))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x4, y_orta1, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta1, y1, 6))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
                       mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
-                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x3, y3, 10))
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta1, y2, 6))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta3, y2, 6))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x_orta3, y1, 6))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x4, y1, 6))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_DELAY, 0, 0, 1, 0, 0, 0, 0, 0, 0))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
+                      mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 1, 0, 0, 0, x3, y3, 6))
     # RTL komutu
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, 
                       mavutil.mavlink.MAV_CMD_NAV_RETURN_TO_LAUNCH, 0, 0, 0, 0, 0, 0, 0, 0, 0))
@@ -115,13 +115,16 @@ def tara(x1, y1, x2, y2, x3, y3, x4, y4):
     print("Komutlar yükleniyor.\n")
 
 # Kalkış yap
-takeoff(10)
+takeoff(6)
 
 # Taramayı başlat
 
 # Sol Alt Köşe, Sağ Alt Köşe, Sağ Üst Köşe, Sol Üst Köşe nin koordinatlarını sırasıyla girin
 
-tara(-35.3632019, 149.1649845, -35.3631713, 149.1659769, -35.3621192, 149.1658482, -35.3621257, 149.1648799)
+#tara(-35.3632019, 149.1649845, -35.3631713, 149.1659769, -35.3621192, 149.1658482, -35.3621257, 149.1648799)
+
+tara(-35.36312265,149.16498214,-35.36312265,149.16537541,-35.36282953,149.16537541,-35.36282953,149.16498214)
+
 
 # İHA'yı otomatik moda al
 komut.next = 0
@@ -177,7 +180,7 @@ with open("data.txt", "w") as file:
         if counter == 10:
             counter = 0
             try:
-                yaz(file, result)
+                yaz(file, results)
             except Exception as e:
                 print(f"Görüntü kaydetme hatası: {e}")
 
