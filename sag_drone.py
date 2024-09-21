@@ -4,6 +4,10 @@ from pymavlink import mavutil
 import cv2
 from ultralytics import YOLO
 import numpy as np
+import os
+import shutil
+
+
 
 # YOLO modelini yükle
 try:
@@ -42,11 +46,27 @@ def takeoff(irtifa):
         print("İHA hedefe yükseliyor.")
         time.sleep(1)
 
-def yaz(file, result):
-    coords = result[0].boxes.xyxy
+
+def clean_log_directory():
+    folder = "log"
+    
+    # Klasör varsa içeriğini sil
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
+        print(f"{folder} klasörü temizlendi.")
+    
+    # Klasörü yeniden oluştur
+    os.makedirs(folder)
+    print(f"{folder} klasörü oluşturuldu.")
+
+clean_log_directory()
+
+def yaz(file, results, drone):
+    coords = results[0].boxes.xyxy
     if coords.size(0) == 0:
         return
-    labels = result[0].boxes.cls
+
+    labels = results[0].boxes.cls
     lbl_np = np.array(labels.cpu())
     a_np = np.array(coords.cpu())
     file.write("[\n")
@@ -54,6 +74,26 @@ def yaz(file, result):
         arr_str = ' '.join(map(str, arr))  # Koordinatları string'e çevir
         file.write(f"{int(lbl)} {arr_str}\n")  # Etiketi ve koordinatları yaz
     file.write("]\n")
+
+    # Drone konumunu al
+    lat = drone.location.global_frame.lat  # Latitude
+    lon = drone.location.global_frame.lon  # Longitude
+    alt = drone.location.global_relative_frame.alt  # Altitude (relative to the takeoff point)
+    
+    # Koordinatları dosya adı için kullan
+    file_name = f"log/img_lat_{lat:.6f}_lon_{lon:.6f}_alt_{alt:.2f}.jpg"
+    
+    # Eğer ilgili nesne varsa (örneğin, label 3)
+    count = 0
+    for lbl in labels:    
+        if lbl == 3:
+            count += 1
+
+    if count >= 1:
+        # Resmi kaydet
+        cv2.imwrite(file_name, results[0].plot())
+        print(f"Resim kaydedildi: {file_name}")
+
 
 # İHA hız ayarları
 sagdrone.airspeed = 2
@@ -180,7 +220,7 @@ with open("data.txt", "w") as file:
         if counter == 10:
             counter = 0
             try:
-                yaz(file, results)
+                yaz(file, results,sagdrone)
             except Exception as e:
                 print(f"Görüntü kaydetme hatası: {e}")
 
